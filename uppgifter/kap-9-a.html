@@ -1,16 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8"/>
   <title>Uppgift 9A, Arbetsboken WU1</title>
-  <meta name="description" content="Arbetsboken Webbteknik 1, Uppgift 9A" />
+  <meta name="description" content="Arbetsboken Webbteknik 1, Uppgift 9A"/>
 </head>
 <body>
 <h1>Uppgift 9A - testa SVG</h1>
 <svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
-  <rect x="20" y="40" width="250" height="100" fill="rgb(200, 50, 50)" stroke="none" />
-  <circle cx="280" cy="150" r="100" fill="rgba(50, 200, 50, 0.5)" stroke="black" stroke-width="1"/>
+  
+   <rect x="20" y="40" width="250" height="100" fill="rgb(20, 255, 20)" stroke="none" />
+  <rect x="200" y="10" width="150" height="80" fill="rgb(255, 50, 255)" fill-opacity="0.5" stroke="black" stroke-width="3"/> !--valde rgb istället för rgba och lade till attributet fill-opacity istället, mdn påstod att fungerade sämre i vissa webläsare att köra rgba --!
+  <circle cx="180" cy="150" r="100" style="fill: rgba(50,200,50, 0.5); stroke: black; stroke-width: 3;" /> !--Redigerat css inline eftersom mdn rekommenderade att göra så istället för extern css--!
   <ellipse cx="170" cy="140" rx="120" ry="60" fill="rgba(50, 50, 250, 0.5)" />
+  
+  <line x1="100" y1="20" x2="200" y2=20 stroke="black" stroke-width="3" />
+  <polyline points="10,10 20,90 40,10 60,90 80,10" fill="blue" stroke="black" stroke-width="1"/>
+  <path d="M 50 300 Q 100 150 150 300 Q 100 300 50 300 Q 250 150 150 300 " fill="red" stroke="black" stroke-width="2" /> !-- för att specifiera banan med attributet d använde jag en editor på https://codepen.io/anthonydugois/pen/mewdyZ för att rita upp grafiken och få värdena. --!
+  
 </svg>
 </body>
 </html>

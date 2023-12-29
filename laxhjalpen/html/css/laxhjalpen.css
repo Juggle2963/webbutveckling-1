@@ -8,15 +8,26 @@ html {
     margin: 2%;
 }
 body {
+    display: flex;      /*Lade till flex här så <nav> i omoss.html hamnar till vänster om diven - funkade inte med de regler som lades till i arbetsboken. */
+    flex-wrap: wrap;       
     margin: auto;
     max-width: 860px;
+    font-family: "Helvetica Neue", "Liberation Sans", Calibri, Arial, sans-serif;   /*5.6*/
+    font-size: 100%;
     /* Lägg till deklarationer här */
 }
-/*
-section, header, footer, nav, div[role=main] {
+
+/*section, header, footer, nav, div[role=main] {
     outline: 1px solid red;
+}*/ 
+h1 {
+font-family: "Merienda one", cursive;   /*5.6*/
 }
-*/
+
+h1::first-letter{
+    color:#00AF64;
+}
+
 /*
 ==================================================================================
 Rules for reusable components
@@ -24,6 +35,46 @@ Rules for reusable components
 */
 
 /* dborder ska vara här - avsnitt 11.7 */
+.dborder{   /*11.7 kant runt figcaption i omoss.html*/
+    border:1px solid #ccc;
+}
+
+article{    /*11.7 */
+    padding-bottom: 1em; /*ger space under sista p-elementet*/
+    margin-bottom: 2em;
+    border-bottom: 3px double #00af64;
+}
+
+
+
+figure{                 /*11,7 CSS för omoss.html*/
+    float: left;
+    margin: 0;
+}
+
+figure img{             /*11.7 */
+    width: 128px;
+    height: 128px;
+}
+
+figcaption{             /*11.7 */
+    font: italic bolder 110% sans-serif;
+    font-family: inherit;       /*restore after shorthand (?)*/
+    text-align: center;
+    text-transform: uppercase;
+    color: #666;
+}
+
+article p{              /*11.7 */
+    margin-left: 140px;
+    hyphens: auto;
+}
+div[role="main"] article:last-of-type {     /*css i arbetsboken fungerade inte. Vet varför --> article:last-child ser <footer> som last-child eftersom den ligger på samma nivå (och footer ligger efter sista <article>), såg detta i domen. Annan lösning hade varit att lägga <footer> i en egen div. */
+  border-bottom: none; /*inga dubbla linjer under sista stycket*/
+  margin-bottom: 0;
+}
+
+
 
 /*
 ==================================================================================
@@ -31,7 +82,8 @@ Page header, all pages
 ==================================================================================
 */
 header {
-    /* text-align: center; */
+    text-align: center; 
+    min-width: 100%;
 }
 /*
 ==================================================================================
@@ -39,17 +91,76 @@ Page footer rules
 ==================================================================================
 */
 
-/* TODO Avsnitt 5.2 */
-
+/* TODO Avsnitt 5.2 -->gjort detta, mtc */
+footer{
+    margin-top: 3em;
+    text-align: center;
+    color: #999;
+}
 /*
 ==================================================================================
 Main site navigation
 ==================================================================================
 */
+.tagline {
+    font-size: 120%;
+    padding: 0.5em;
+    border-top: 3px double #00AF64;
+    border-bottom: 3px double #00AF64;
+    margin: 1em 0;
+   } 
+
+    .hwrap {
+        display: flex;             /*Gör diven till en flex container*/
+        flex-wrap: wrap;           /*radbryt om det behövs*/
+        align-items: center;       /*lägg elementen centrerat vertikalt*/
+        justify-content: center;   /*och intill varandra centrerat*/
+    }
+
+    .hwrap > a {
+        margin-right: 30px;
+    }
+
 
 /* Alla regler för .menu med relaterade element */
 
-/* TODO Avsnitt 5.2, 5.4, 5.5, 5.6, 11.4.2 */
+/* TODO Avsnitt 5.2, 5.4, 5.5, 5.6, 11.4.2 --> gjort 5.2, 5.4, 5.5, 5.6, 11.4.2 */
+
+.menu > li, /*omoss.html 11.4.2*/
+.menu > h2{
+    margin: 0 0 1em;
+    padding: 2em 0em;
+    background-color: #F5F5F5; /*5.2*/
+    text-align: center;
+    box-shadow: inset 0 0 20px #007241; /*5.5*/
+    border-radius: 50%;
+    font-family: "Merienda One", cursive; /*5.6*/
+}
+
+.menu a:link,.menu a:visited{
+    text-decoration: none;  /*5.4*/
+    color: #000;
+}
+
+.menu a:focus,.menu a:hover{
+    text-decoration: underline;/*5.4*/
+    color:#A62F00;
+}
+
+.menu a:active{
+    text-decoration: underline; /*5.4*/
+    color:#FF4900;
+}
+
+.menu{
+    margin: 1em 0;  /*omoss.html 11.4.2*/
+    padding: 0;
+}
+
+.menu li{
+    margin: 0 0 1rem;   /*omoss.html 11.4.2*/
+    list-style: none;
+}
 
 
 /*
@@ -59,7 +170,28 @@ Start page rules
 */
 
 /* Regler med klassen .startpage, avsnitt 5.2, 5.3 och 5.8 */
+.startpage{
+    display: flex;
+    flex-wrap: wrap;   /*5.3*/
+    justify-content: space-between;
+}
 
+.startpage header, .startpage footer{
+    flex: 0 0 100%; /*5.3*/
+}
+
+.startpage section{
+    flex:0 0 22%; /*5.3*/
+}
+}
+.startpage h1{
+    font-size: 500%; /*5.2*/
+}
+
+.startpage .logo {
+    width: 235px;   /*5.8*/
+    height: 198px;
+}
 /*
 ==================================================================================
 Subpages
@@ -67,7 +199,31 @@ Subpages
 */
 
 /* TODO Avsnitt 11.4.1, 11.6,  */
+.subpage .logo{
+    width:146px; /*11.4.1*/
+    height:123px;
+}
+.subpage h1{
+    font-size: 2.6rem; /*11.4.1*/
+}
+h1 > span{
+    color: #a62f00; /*11.4.1*/
+}
 
+.subpage .hwrap{  /* 11.6 justerar flex för två containers, a och h1 i header omoss.html och ligger under body .subpage -> header .hwrap */
+    justify-content: space-between;
+}
+
+.subpage .hwrap > a, nav{ /*11.6 för att bilden logo i header ska ha samma min-bredd som menu i nav*/
+    flex: 0 1 20%;
+    min-width: 146px;
+    margin-right: 10px;
+    outline: 1px solid; /*Temporär för att se layout*/
+}
+
+.subpage .hwrap > h1, div[role=main]{ /*11.6 flex-basis för att upphäva tidigare regel för h1 - när min-width inträffar vid 475px hoppar h1 ner under bilden a*/
+    flex: 1 1 300px;
+}
 /*
 ==================================================================================
 Tables
@@ -108,12 +264,21 @@ Adaptive design
 .tagline button {
     /* display: none; */ /* Aktivera */
 }
-@media (max-width: 750px) {
+ @media (max-width: 750px) {
     .hwrap > a {
         margin-right: 25px;
     }
     /* Lägg till regler enligt kapitel 15 */
-}
+} 
 
 /* TODO Avsnitt 15.4.2 + arbetsboken */
 
+
+/*
+.flex {
+    display: flex;  /Eriks variant - flex för uppdelning av meny och div innehåll i kolumner --- float left för att få bilder på personer till vänster i texten .. sätts på figure
+}
+.alignleft {
+    float: left;
+}
+*/
